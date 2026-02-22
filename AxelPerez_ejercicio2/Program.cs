@@ -109,7 +109,6 @@ if (usb == "S")
     }
 }
 
-// ===== SALIDA =====
 if (acceso == 1)
     Console.WriteLine("Acceso: PERMITIDO");
 else
