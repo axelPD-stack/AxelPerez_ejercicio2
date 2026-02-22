@@ -46,4 +46,16 @@ else if (dia < 1 || dia > 7)
 
 acceso = 0;
 nivel = "Sin permiso";
+switch (rol)
+{
+    case 1:
+        if (carnet == "S")
+        {
+            if (dia >= 1 && dia <= 5 && hora >= 7 && hora <= 18)
+            {
+                acceso = 1;
+                nivel = "Acceso estudiante";
+            }
+        }
+        break;
 
