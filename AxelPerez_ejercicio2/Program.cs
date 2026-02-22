@@ -1,4 +1,6 @@
-﻿Console.WriteLine("Rol:");
+﻿using System.Threading.Channels;
+
+Console.WriteLine("Rol:");
 Console.WriteLine("1 Estudiante");
 Console.WriteLine("2 Docente");
 Console.WriteLine("3 Técnico IT");
@@ -58,4 +60,63 @@ switch (rol)
             }
         }
         break;
+    case 2:
+        if (carnet == "S")
+        {
+            acceso = 1;
+            nivel = "Acceso docente";
+        }
+        break;
+
+    case 3:
+        if (carnet == "S")
+        {
+            if (hora >= 7 && hora <= 18)
+            {
+                acceso = 1;
+                nivel = "Acceso técnico";
+            }
+            else if (autorizacion == "S")
+            {
+                acceso = 1;
+                nivel = "Técnico fuera de horario";
+            }
+        }
+        break;
+
+    case 4:
+        if (autorizacion == "S")
+        {
+            if (acompanado == "S")
+            {
+                acceso = 1;
+                nivel = "Visitante supervisado";
+            }
+        }
+        break;
+
+    default:
+        Console.WriteLine("Rol inválido");
+        return;
+
+}
+if (usb == "S")
+{
+    if (!(autorizacion == "S" && acompanado == "S"))
+    {
+        acceso = 0;
+        nivel = "USB no permitido";
+    }
+}
+
+// ===== SALIDA =====
+if (acceso == 1)
+    Console.WriteLine("Acceso: PERMITIDO");
+else
+    Console.WriteLine("Acceso: DENEGADO");
+
+Console.WriteLine("Nivel de permiso: " + nivel);
+
+
+
 
